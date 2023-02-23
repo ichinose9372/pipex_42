@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:02:14 by yichinos          #+#    #+#             */
-/*   Updated: 2023/02/23 16:24:57 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:01:54 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int	main(void)
 		free(path);
 	}
 	printf("%s\n", path);
+	printf("aaaa\n");
 	return (0);
 }
