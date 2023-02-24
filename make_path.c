@@ -1,43 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   make_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 15:02:14 by yichinos          #+#    #+#             */
-/*   Updated: 2023/02/24 15:13:13 by ichinoseyuu      ###   ########.fr       */
+/*   Created: 2023/02/24 15:41:12 by ichinoseyuu       #+#    #+#             */
+/*   Updated: 2023/02/24 20:07:46 by ichinoseyuu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "include/pipex.h"
 
-char	*create_path(**env)
+char	*make_path(char *split_arg, char **envp)
 {
-	char	**str;
-	char	*tmp;
+	char	*env_tmp;
+	char	**enb_suplit;
+	char	*trim;
 	char	*path;
-	char	*cmd;
+	char	*tmp;
 
-	env = environ;
-	while (*env)
+	trim = "PATH=";
+	while (*envp)
 	{
-		if (strncmp(*env, "PATH=", 5) == 0)
+
+		if ((ft_strncmp(*envp, trim, ft_strlen(trim))) == 0)
 			break ;
-		env++;
+		envp++;
 	}
-	tmp = "PATH=";
-	*env = ft_strtrim(*env, tmp);
-	str = ft_split(*env, ':');
-	cmd = "/ls";
-	while (*str)
+	env_tmp = ft_strtrim(*envp, trim);
+	enb_suplit = ft_split(env_tmp, ':');
+	trim = "/";
+	tmp = ft_strjoin(trim, split_arg);
+	while (*enb_suplit)
 	{
-		path = ft_strjoin(*str, cmd);
+		path = ft_strjoin(*enb_suplit, tmp);
 		if (access(path, X_OK) == 0)
-			break ;
-		str++;
+			return (path);
+		enb_suplit++;
 		free(path);
 	}
-	printf("%s\n", path);
-	printf("aaaa\n");
-	return (0);
+	return (NULL);
 }

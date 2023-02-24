@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichinos <yichinos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 20:21:27 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2022/10/22 11:48:09 by yichinos         ###   ########.fr       */
+/*   Created: 2023/02/24 13:45:33 by ichinoseyuu       #+#    #+#             */
+/*   Updated: 2023/02/24 20:03:13 by ichinoseyuu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#ifndef PIPEX_H
+# define PIPEX_H
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*ndptr;
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include "../libft/libft.h"
 
-	ndptr = *lst;
-	if (*lst == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	while (ndptr -> next != NULL)
-	{
-		ndptr = ndptr -> next;
-	}
-	ndptr -> next = new;
-}
+char	*make_path(char	*split_arg, char **envp);
+
+#endif
