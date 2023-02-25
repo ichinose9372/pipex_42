@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
+/*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:45:33 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/02/24 20:03:13 by ichinoseyuu      ###   ########.fr       */
+/*   Updated: 2023/02/25 13:18:22 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include "../libft/libft.h"
+# include <fcntl.h>
 
 char	*make_path(char	*split_arg, char **envp);
 
