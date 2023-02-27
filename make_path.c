@@ -3,37 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   make_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:41:12 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/02/25 16:39:29 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/02/27 14:00:10 by ichinoseyuu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/pipex.h"
 
+char	**envp_make_path(char **envp)
+{
+	char	*serch;
+	char	*trim_env;
+	char	**env_split;
+
+	serch = "PATH=";
+	while (*envp)
+	{
+		if ((ft_strncmp(*envp, serch, ft_strlen(serch))) == 0)
+			break ;
+		envp++;
+	}
+	trim_env = ft_strtrim(*envp, serch);
+	env_split = ft_split(*envp, ':');
+	return (env_split);
+}
+
 char	*make_path(char *argv, char **envp)
 {
-	char	*env_tmp;
 	char	**enb_suplit;
 	char	*trim;
 	char	*path;
 	char	*tmp;
-	char	**split_arg;
-	int		i;
 
-	split_arg = ft_split(argv, ' ');
-	trim = "PATH=";
-	while (*envp)
-	{
-		if ((ft_strncmp(*envp, trim, ft_strlen(trim))) == 0)
-			break ;
-		envp++;
-	}
-	env_tmp = ft_strtrim(*envp, trim);
-	enb_suplit = ft_split(env_tmp, ':');
+	enb_suplit = envp_make_path(envp);
 	trim = "/";
-	tmp = ft_strjoin(trim, split_arg[0]);
+	tmp = ft_strjoin(trim, argv);
 	while (*enb_suplit)
 	{
 		path = ft_strjoin(*enb_suplit, tmp);

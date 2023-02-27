@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:50:07 by yichinos          #+#    #+#             */
-/*   Updated: 2023/02/26 19:59:16 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/02/27 13:55:26 by ichinoseyuu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/pipex.h"
 
-int	file_open(char	*argv)
+int	file_open_rd(char	*argv)
 {
 	int	fd;
 
@@ -22,7 +22,7 @@ int	file_open(char	*argv)
 	return (fd);
 }
 
-int	file_open2(char	*argv)
+int	file_open_wrt(char	*argv)
 {
 	int	fd;
 
@@ -46,14 +46,8 @@ char	**split_arg(char *argv, char **envp)
 	return (tmp);
 }
 
-int	pipe_init(int fd[2])
+void	pipe_init(t_data *pipex)
 {
-	int	pid;
-
-	if (pipe(fd) < 0)
+	if (pipe(pipex->p_fd) < 0)
 		ft_error("error pipe\n");
-	pid = fork();
-	if (pid < 0)
-		ft_error("error fork\n");
-	return (pid);
 }

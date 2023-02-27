@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 13:14:17 by yichinos          #+#    #+#             */
-/*   Updated: 2023/02/26 20:00:08 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/02/27 12:53:11 by ichinoseyuu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 int	main(int argc, char **argv, char **envp)
 {
 	char	**s_arg;
-	int		fd;
+	int		f_fd;
 	int		p_fd[2];
-	int		pid;
+	pid_t	pid;
 	int		error_num;
 	int		status;
 
 	pid = pipe_init(p_fd);
 	if (pid == 0)
 	{
-		fd = file_open(argv[1]);
+		// do_chiled1
+		f_fd = file_open(argv[1]);
 		s_arg = split_arg(argv[2], envp);
 		close(p_fd[0]);
 		dup2(p_fd[1], 1);
@@ -39,12 +40,13 @@ int	main(int argc, char **argv, char **envp)
 	}
 	else if (pid > 0)
 	{
+		//do_child2
 		wait(&status);
 		s_arg = split_arg(argv[3], envp);
 		close(p_fd[1]);
 		dup2(p_fd[0], 0);
 		close(p_fd[0]);
-		fd = file_open2(argv[4]);
+		f_fd = file_open2(argv[4]);
 		dup2(fd, STDOUT_FILENO);
 		close(fd);
 		error_num = execve(s_arg[0], s_arg, envp);
