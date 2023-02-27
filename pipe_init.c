@@ -6,7 +6,7 @@
 /*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:50:07 by yichinos          #+#    #+#             */
-/*   Updated: 2023/02/27 14:24:36 by ichinoseyuu      ###   ########.fr       */
+/*   Updated: 2023/02/27 14:57:18 by ichinoseyuu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ char	**split_arg(char *argv, char **envp)
 		return (NULL);
 	}
 	tmp[0] = make_path(tmp[0], envp);
+	if (tmp[0] == NULL)
+		return (NULL);
 	return (tmp);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:23:47 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/02/27 14:24:45 by ichinoseyuu      ###   ########.fr       */
+/*   Updated: 2023/02/27 15:03:08 by ichinoseyuu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,9 @@ int	main(int argc, char **argv, char **envp)
 	wait(&px.status);
 	wait(&px.status);
 	return (0);
+}
+
+__attribute__((destructor)) static void destructor()
+{
+    system("leaks -q a.out");
 }

@@ -6,7 +6,7 @@
 /*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:41:12 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/02/27 14:00:10 by ichinoseyuu      ###   ########.fr       */
+/*   Updated: 2023/02/27 14:56:39 by ichinoseyuu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	**envp_make_path(char **envp)
 	}
 	trim_env = ft_strtrim(*envp, serch);
 	env_split = ft_split(*envp, ':');
+	if (env_split == NULL)
+		return (NULL);
 	return (env_split);
 }
 
@@ -38,11 +40,17 @@ char	*make_path(char *argv, char **envp)
 	char	*tmp;
 
 	enb_suplit = envp_make_path(envp);
+	if (enb_suplit == NULL)
+		return (NULL);
 	trim = "/";
 	tmp = ft_strjoin(trim, argv);
+	if (tmp == NULL)
+		return (NULL);
 	while (*enb_suplit)
 	{
 		path = ft_strjoin(*enb_suplit, tmp);
+		if (path == NULL)
+			return (NULL);
 		if (access(path, X_OK) == 0)
 			return (path);
 		enb_suplit++;
