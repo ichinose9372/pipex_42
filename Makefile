@@ -2,7 +2,7 @@ CC		=	CC
 CFLAGS	=	-Wall -Wextra -Werror
 NAME	=	pipex
 SRCS	=	main.c\
-			pipe_init.c\
+			pipe_file_init.c\
 			chiled.c\
 			make_path.c\
 			error.c

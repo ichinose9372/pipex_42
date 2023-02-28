@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:23:47 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/02/28 12:27:21 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:37:03 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int	main(int argc, char **argv, char **envp)
 	t_data	px;
 
 	if (argc < 5)
-		ft_error("error\n");
+	{
+		ft_putstr_fd("error\n", 1);
+		exit(EXIT_FAILURE);
+	}
 	pipe_init(&px);
 	if (fork() == 0)
 		chiled_1(argv, &px, envp);
@@ -30,7 +33,7 @@ int	main(int argc, char **argv, char **envp)
 	return (0);
 }
 
-__attribute__((destructor)) static void destructor()
-{
-	system("leaks -q a.out");
-}
+// __attribute__((destructor)) static void destructor()
+// {
+// 	system("leaks -q pipex");
+// }

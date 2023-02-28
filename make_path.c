@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
+/*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:41:12 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/02/27 14:56:39 by ichinoseyuu      ###   ########.fr       */
+/*   Updated: 2023/02/28 14:02:33 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,21 @@ char	*make_path(char *argv, char **envp)
 		enb_suplit++;
 		free(path);
 	}
+	command_not_found(argv);
 	return (NULL);
+}
+
+char	**split_arg(char *argv, char **envp)
+{
+	char	**tmp;
+
+	if (argv == NULL || *argv == '\0')
+		return (NULL);
+	tmp = ft_split(argv, ' ');
+	if (tmp == NULL)
+		return (NULL);
+	tmp[0] = make_path(tmp[0], envp);
+	if (tmp[0] == NULL)
+		return (NULL);
+	return (tmp);
 }

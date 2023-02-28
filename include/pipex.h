@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:45:33 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/02/28 12:22:13 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:35:04 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ int		file_open_rd(char	*argv);
 void	chiled_1(char **argv, t_data *px, char **envp);
 void	chiled_2(char **argv, t_data *px, char **envp);
 	// error
-void	ft_error(char *str);
+void	free_all(char **str);
+void	command_not_found(char *str);
+
 #endif
