@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yichinos <yichinos@student.42.fr>          +#+  +:+       +#+         #
+#    By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 13:35:07 by ichinoseyuu       #+#    #+#              #
-#    Updated: 2022/10/25 12:54:32 by yichinos         ###   ########.fr        #
+#    Updated: 2023/02/28 12:59:47 by yichinos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,19 +47,7 @@ SRCS	=	ft_isalpha.c	\
 			ft_striteri.c	\
 			ft_split.c		\
 
-BONUS = ft_lstadd_back.c	\
-		ft_lstadd_front.c	\
-		ft_lstclear.c		\
-		ft_lstdelone.c 		\
-		ft_lstiter.c 		\
-		ft_lstlast.c 		\
-		ft_lstnew.c 		\
-		ft_lstsize.c		\
-		ft_lstmap.c
-
 OBJS	=	$(SRCS:.c=.o)
-
-BONUS_OBJS = $(BONUS:.c=.o)
 
 CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror
@@ -77,9 +65,5 @@ fclean: clean
 	$(RM) $(NAME)
 
 re:		fclean all
-
-bonus:	$(OBJS) $(BONUS_OBJS)
-	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-
 
 .PHONY: all clean fclean re bonus

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
+/*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:23:47 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/02/27 15:03:08 by ichinoseyuu      ###   ########.fr       */
+/*   Updated: 2023/02/28 12:27:21 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ int	main(int argc, char **argv, char **envp)
 
 __attribute__((destructor)) static void destructor()
 {
-    system("leaks -q a.out");
+	system("leaks -q a.out");
 }
