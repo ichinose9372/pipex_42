@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:51:56 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/01 12:13:32 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:29:39 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ void	chiled_1(char **argv, t_data *px, char **envp)
 void	chiled_2(char **argv, t_data *px, char	**envp)
 {
 	px->f_fd = file_open_wrt(argv[4]);
+	if (argv[2] && argv[2][0] != '\0')
 	px->split_arg = split_arg(argv[3], envp);
 	if (px->split_arg == NULL)
 	{
 		command_not_found(argv[3]);
+		close(px->f_fd);
 		exit(EXIT_FAILURE);
 	}
 	close(px->p_fd[1]);
