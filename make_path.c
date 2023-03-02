@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:41:12 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/01 12:04:18 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/01 22:20:58 by ichinoseyuu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**envp_make_path(char **envp)
 		envp++;
 	}
 	trim_env = ft_strtrim(*envp, serch);
-	env_split = ft_split(*envp, ':');
+	env_split = ft_split(trim_env, ':');
 	if (env_split == NULL)
 		return (NULL);
 	return (env_split);

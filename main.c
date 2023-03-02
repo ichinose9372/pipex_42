@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:23:47 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/02/28 14:37:03 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/01 22:30:23 by ichinoseyuu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	main(int argc, char **argv, char **envp)
 		chiled_2(argv, &px, envp);
 	close (px.p_fd[0]);
 	close(px.p_fd[1]);
-	wait(&px.status);
-	wait(&px.status);
+	waitpid(px.pid, &px.status, 0);
+	waitpid(px.pid, &px.status, 0);
 	return (0);
 }
 
