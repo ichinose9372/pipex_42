@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:45:33 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/04 11:55:00 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/04 12:23:31 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <string.h>
 # include "../libft/libft.h"
 # include <fcntl.h>
+# include <errno.h>
 
 typedef struct s_data
 {
