@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:50:07 by yichinos          #+#    #+#             */
-/*   Updated: 2023/02/28 14:39:33 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/04 12:09:17 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	file_open_wrt(char	*argv)
 {
 	int	fd;
 
-	fd = open(argv, O_WRONLY | O_APPEND | O_TRUNC);
+	fd = open(argv, O_WRONLY | O_CREAT, 0644 | O_TRUNC);
 	if (fd < 0)
 	{
 		ft_putstr_fd("no such file or directory\n", 1);
@@ -38,8 +38,9 @@ int	file_open_wrt(char	*argv)
 	return (fd);
 }
 
-void	pipe_init(t_data *pipex)
+void	pipe_init(t_data *px)
 {
-	if (pipe(pipex->p_fd) < 0)
+	px->pid = 0;
+	if (pipe(px->p_fd) < 0)
 		exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:45:33 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/02/28 14:35:04 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/04 11:55:00 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_data
 char	**envp_make_path(char **envp);
 char	*make_path(char *split_arg, char **envp);
 char	**split_arg(char *argv, char **envp);
-void	pipe_init(t_data *pipex);
+void	pipe_init(t_data *px);
 int		file_open_wrt(char *argv);
 int		file_open_rd(char	*argv);
 void	chiled_1(char **argv, t_data *px, char **envp);
