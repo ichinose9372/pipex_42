@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:51:56 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/06 14:07:37 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:56:53 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,18 @@ void	chiled_1(char **argv, t_data *px, char **envp)
 			px->split_arg = split_arg(argv[2], envp);
 			if (px->split_arg == NULL)
 				exit(EXIT_FAILURE);
-			close(px->p_fd[0]);
-			dup2(px->f_fd, 0);
-			dup2(px->p_fd[1], 1);
-			px->error_num = execve(px->split_arg[0], px->split_arg, envp);
-			perror("exec");
 		}
 		else
-			printf("aaaaa\n");
+		{
+			px->split_arg = ft_split(argv[2], ' ');
+			if (px->split_arg == NULL)
+				exit(EXIT_FAILURE);
+		}
+		close(px->p_fd[0]);
+		dup2(px->f_fd, 0);
+		dup2(px->p_fd[1], 1);
+		px->error_num = execve(px->split_arg[0], px->split_arg, envp);
+		perror("exec");
 	}
 	else
 	{
@@ -55,15 +59,19 @@ void	chiled_2(char **argv, t_data *px, char	**envp)
 			px->split_arg = split_arg(argv[3], envp);
 			if (px->split_arg == NULL)
 				exit(EXIT_FAILURE);
-			close(px->p_fd[1]);
-			dup2(px->p_fd[0], 0);
-			dup2(px->f_fd, 1);
-			close(px->f_fd);
-			px->error_num = execve(px->split_arg[0], px->split_arg, envp);
-			perror("exec");
 		}
 		else
-			printf("bbbbb\n");
+		{
+			px->split_arg = ft_split(argv[3], ' ');
+			if (px->split_arg == NULL)
+				exit(EXIT_FAILURE);
+		}
+		close(px->p_fd[1]);
+		dup2(px->p_fd[0], 0);
+		dup2(px->f_fd, 1);
+		close(px->f_fd);
+		px->error_num = execve(px->split_arg[0], px->split_arg, envp);
+		perror("exec");
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:41:12 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/06 15:15:44 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:44:21 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ char	*make_path(char *argv, char **envp)
 	char	*trim;
 	char	*path;
 	char	*tmp;
-	int		i;
 
 	env_split = envp_make_path(envp);
 	if (env_split == NULL)
@@ -48,23 +47,18 @@ char	*make_path(char *argv, char **envp)
 	tmp = ft_strjoin(trim, argv);
 	if (tmp == NULL)
 		return (NULL);
-	i = 0;
-	while (env_split[i])
+	while (*env_split)
 	{
-		path = ft_strjoin(env_split[i], tmp);
+		path = ft_strjoin(*env_split, tmp);
 		if (path == NULL)
 			return (NULL);
 		if (access(path, X_OK) == 0)
-		{
-			free_all(env_split);
-			free(tmp);
 			return (path);
-		}
-		free(env_split[i]);
-		i++;
 		env_split++;
 		free(path);
 	}
+	free_all(env_split);
+	free(tmp);
 	command_not_found(argv);
 	return (NULL);
 }
