@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
+/*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:41:12 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/01 22:20:58 by ichinoseyuu      ###   ########.fr       */
+/*   Updated: 2023/03/06 15:15:44 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,40 @@ char	**envp_make_path(char **envp)
 	env_split = ft_split(trim_env, ':');
 	if (env_split == NULL)
 		return (NULL);
+	free(trim_env);
 	return (env_split);
 }
 
 char	*make_path(char *argv, char **envp)
 {
-	char	**enb_suplit;
+	char	**env_split;
 	char	*trim;
 	char	*path;
 	char	*tmp;
+	int		i;
 
-	enb_suplit = envp_make_path(envp);
-	if (enb_suplit == NULL)
+	env_split = envp_make_path(envp);
+	if (env_split == NULL)
 		return (NULL);
 	trim = "/";
 	tmp = ft_strjoin(trim, argv);
 	if (tmp == NULL)
 		return (NULL);
-	while (*enb_suplit)
+	i = 0;
+	while (env_split[i])
 	{
-		path = ft_strjoin(*enb_suplit, tmp);
+		path = ft_strjoin(env_split[i], tmp);
 		if (path == NULL)
 			return (NULL);
 		if (access(path, X_OK) == 0)
+		{
+			free_all(env_split);
+			free(tmp);
 			return (path);
-		enb_suplit++;
+		}
+		free(env_split[i]);
+		i++;
+		env_split++;
 		free(path);
 	}
 	command_not_found(argv);
