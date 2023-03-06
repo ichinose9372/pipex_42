@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:23:47 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/06 16:47:03 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:05:57 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv, char **envp)
 
 	if (argc != 5)
 	{
-		ft_putstr_fd("error\n", 1);
+		ft_putendl_fd("error", STDOUT_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	pipe_init(&px);

@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:41:12 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/06 16:44:21 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:45:12 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,23 @@ char	**envp_make_path(char **envp)
 	return (env_split);
 }
 
+char	*serch_path(char	*tmp, char **env_split)
+{
+	char	*path;
+
+	while (*env_split)
+	{
+		path = ft_strjoin(*env_split, tmp);
+		if (path == NULL)
+			return (NULL);
+		if (access(path, X_OK) == 0)
+			return (path);
+		env_split++;
+		free(path);
+	}
+	return (NULL);
+}
+
 char	*make_path(char *argv, char **envp)
 {
 	char	**env_split;
@@ -47,20 +64,15 @@ char	*make_path(char *argv, char **envp)
 	tmp = ft_strjoin(trim, argv);
 	if (tmp == NULL)
 		return (NULL);
-	while (*env_split)
+	path = serch_path(tmp, env_split);
+	if (path == NULL)
 	{
-		path = ft_strjoin(*env_split, tmp);
-		if (path == NULL)
-			return (NULL);
-		if (access(path, X_OK) == 0)
-			return (path);
-		env_split++;
-		free(path);
+		command_not_found(argv);
+		all_free(tmp, env_split);
+		return (NULL);
 	}
-	free_all(env_split);
-	free(tmp);
-	command_not_found(argv);
-	return (NULL);
+	all_free(tmp, env_split);
+	return (path);
 }
 
 char	**split_arg(char *argv, char **envp)

@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:45:33 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/06 15:33:14 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:12:17 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 # include <errno.h>
+
+# define READ	0
+# define WRITE	1
 
 typedef struct s_data
 {
@@ -39,8 +42,10 @@ int		file_open_wrt(char *argv);
 int		file_open_rd(char	*argv);
 void	chiled_1(char **argv, t_data *px, char **envp);
 void	chiled_2(char **argv, t_data *px, char **envp);
+void	check_arg(char	*argv, t_data *px, char	**envp);
+char	*serch_path(char	*tmp, char **env_split);
 	// error
-void	free_all(char **str);
+void	all_free(char *tmp, char **env_split);
 void	command_not_found(char *str);
 
 #endif
