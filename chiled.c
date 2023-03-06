@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chiled.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:51:56 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/06 19:02:31 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/06 22:31:23 by ichinoseyuu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ void	chiled_1(char **argv, t_data *px, char **envp)
 	{
 		check_arg(argv[2], px, envp);
 		close(px->p_fd[READ]);
-		dup2(px->f_fd, STDOUT_FILENO);
-		dup2(px->p_fd[WRITE], STDIN_FILENO);
+		dup2(px->f_fd, STDIN_FILENO);
+		dup2(px->p_fd[WRITE], STDOUT_FILENO);
 		px->error_num = execve(px->split_arg[0], px->split_arg, envp);
 		perror("exec");
 	}
 	else
 	{
 		while (read(px->f_fd, &buf, STDOUT_FILENO) > 0)
-			write(px->p_fd[1], &buf, STDOUT_FILENO);
+			write(px->p_fd[WRITE], &buf, STDOUT_FILENO);
 		close(px->f_fd);
-		close(px->p_fd[1]);
+		close(px->p_fd[WRITE]);
 		exit(EXIT_SUCCESS);
 	}
 }
@@ -45,8 +45,8 @@ void	chiled_2(char **argv, t_data *px, char	**envp)
 	{
 		check_arg(argv[3], px, envp);
 		close(px->p_fd[WRITE]);
-		dup2(px->p_fd[READ], STDOUT_FILENO);
-		dup2(px->f_fd, STDIN_FILENO);
+		dup2(px->p_fd[READ], STDIN_FILENO);
+		dup2(px->f_fd, STDOUT_FILENO);
 		close(px->f_fd);
 		px->error_num = execve(px->split_arg[0], px->split_arg, envp);
 		perror("exec");
@@ -54,7 +54,7 @@ void	chiled_2(char **argv, t_data *px, char	**envp)
 	else
 	{
 		close(px->p_fd[1]);
-		while (read(px->p_fd[0], &buf, STDOUT_FILENO) > 0)
+		while (read(px->p_fd[STDIN_FILENO], &buf, STDOUT_FILENO) > 0)
 			write(px->f_fd, &buf, STDOUT_FILENO);
 		close(px->f_fd);
 		close(px->p_fd[READ]);
