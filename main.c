@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
+/*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:23:47 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/06 22:19:50 by ichinoseyuu      ###   ########.fr       */
+/*   Updated: 2023/03/09 10:55:58 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,18 @@ int	main(int argc, char **argv, char **envp)
 		exit(EXIT_FAILURE);
 	}
 	pipe_init(&px);
-	px.pid1 = fork();
-	if (px.pid1 == 0)
+	px.pid[0] = fork();
+	px.pid[1] = fork();
+	if ((px.pid[0] < 0) || (px.pid[1] < 0))
+		exit(EXIT_FAILURE);
+	else if ((px.pid[0] == 0) && (px.pid[1] > 0))
 		chiled_1(argv, &px, envp);
-	else if (px.pid1 < 0)
-		exit(EXIT_FAILURE);
-	px.pid2 = fork();
-	if (px.pid2 == 0)
+	else if ((px.pid[1] == 0) && (px.pid[0] > 0))
 		chiled_2(argv, &px, envp);
-	else if (px.pid2 < 0)
-		exit(EXIT_FAILURE);
 	close (px.p_fd[0]);
 	close(px.p_fd[1]);
-	waitpid(px.pid1, &px.status, 0);
-	waitpid(px.pid2, &px.status, 0);
+	waitpid(px.pid[0], &px.status, 0);
+	waitpid(px.pid[1], &px.status, 0);
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_file_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
+/*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:50:07 by yichinos          #+#    #+#             */
-/*   Updated: 2023/03/06 22:20:19 by ichinoseyuu      ###   ########.fr       */
+/*   Updated: 2023/03/09 10:34:39 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	file_open_wrt(char	*argv)
 
 void	pipe_init(t_data *px)
 {
-	px->pid1 = 0;
-	px->pid2 = 0;
+	px->pid[0] = 0;
+	px->pid[1] = 0;
 	if (pipe(px->p_fd) < 0)
 		exit(EXIT_FAILURE);
 }

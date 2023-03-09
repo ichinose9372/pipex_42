@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
+/*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:45:33 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/06 22:15:13 by ichinoseyuu      ###   ########.fr       */
+/*   Updated: 2023/03/09 10:36:27 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@
 
 typedef struct s_data
 {
-	pid_t	pid1;
-	pid_t	pid2;
+	pid_t	pid[2];
 	int		error_num;
 	int		status;
 	char	**split_arg;
