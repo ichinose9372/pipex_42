@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:45:33 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/09 10:36:27 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:57:31 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	chiled_2(char **argv, t_data *px, char **envp);
 void	check_arg(char	*argv, t_data *px, char	**envp);
 char	*serch_path(char	*tmp, char **env_split);
 	// error
-void	all_free(char *tmp, char **env_split);
+void	all_free(char **env_split);
+void	all_free_and_tmp(char *tmp, char **env_split);
 void	command_not_found(char *str);
 
 #endif

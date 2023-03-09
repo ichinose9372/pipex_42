@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:58:43 by yichinos          #+#    #+#             */
-/*   Updated: 2023/03/06 18:40:23 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:57:47 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	command_not_found(char *str)
 	ft_putchar_fd('\n', 1);
 }
 
-void	all_free(char *tmp, char **env_split)
+void	all_free(char **env_split)
 {
 	int	i;
 
@@ -30,5 +30,11 @@ void	all_free(char *tmp, char **env_split)
 		i++;
 	}
 	free(env_split);
-	free(tmp);
+}
+
+void	all_free_and_tmp(char *tmp, char **env_split)
+{
+	all_free(env_split);
+	if (tmp != NULL)
+		free(tmp);
 }

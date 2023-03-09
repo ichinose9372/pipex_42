@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:23:47 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/09 10:55:58 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/09 19:30:05 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv, char **envp)
 	close(px.p_fd[1]);
 	waitpid(px.pid[0], &px.status, 0);
 	waitpid(px.pid[1], &px.status, 0);
-	return (0);
+	exit(EXIT_SUCCESS);
 }
 
 // __attribute__((destructor)) static void destructor()

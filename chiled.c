@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chiled.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
+/*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:51:56 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/06 22:31:23 by ichinoseyuu      ###   ########.fr       */
+/*   Updated: 2023/03/09 19:02:29 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:50:07 by yichinos          #+#    #+#             */
-/*   Updated: 2023/03/09 10:34:39 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:52:49 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	file_open_wrt(char	*argv)
 {
 	int	fd;
 
-	fd = open(argv, O_WRONLY | O_CREAT, 0644 | O_TRUNC);
+	fd = open(argv, O_TRUNC | O_WRONLY | O_CREAT, 0644);
 	if (fd < 0)
 	{
 		perror("Error");
