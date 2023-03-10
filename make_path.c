@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:41:12 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/09 18:20:52 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:45:56 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*make_path(char *argv, char **envp)
 	tmp = ft_strjoin(trim, argv);
 	if (tmp == NULL)
 	{
-		all_free_and_tmp(tmp, env_split);
+		all_free(env_split);
 		return (NULL);
 	}
 	path = serch_path(tmp, env_split);

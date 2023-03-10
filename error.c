@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:58:43 by yichinos          #+#    #+#             */
-/*   Updated: 2023/03/09 17:57:47 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:52:54 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ void	all_free(char **env_split)
 void	all_free_and_tmp(char *tmp, char **env_split)
 {
 	all_free(env_split);
-	if (tmp != NULL)
-		free(tmp);
+	free(tmp);
 }
