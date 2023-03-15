@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ichinoseyuuki <ichinoseyuuki@student.42    +#+  +:+       +#+        */
+/*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:23:47 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/10 15:44:02 by ichinoseyuu      ###   ########.fr       */
+/*   Updated: 2023/03/14 17:02:03 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/pipex.h"
 
-int main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
 	t_data	px;
 
@@ -39,7 +39,7 @@ int main(int argc, char **argv, char **envp)
 	return (EXIT_SUCCESS);
 }
 
-	__attribute__((destructor)) static void destructor()
-	{
-		system("leaks -q pipex");
-	}
+	// __attribute__((destructor)) static void destructor()
+	// {
+	// 	system("leaks -q pipex");
+	// }
