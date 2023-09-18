@@ -6,7 +6,7 @@
 /*   By: yichinos <yichinos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:51:56 by ichinoseyuu       #+#    #+#             */
-/*   Updated: 2023/03/14 17:01:36 by yichinos         ###   ########.fr       */
+/*   Updated: 2023/03/09 19:02:29 by yichinos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	check_arg(char	*argv, t_data *px, char	**envp)
 	if (ft_strchr(argv, '/') == 0)
 	{
 		px->split_arg = split_arg(argv, envp);
-		if (*px->split_arg == NULL)
+		if (px->split_arg == NULL)
 			exit(EXIT_FAILURE);
 	}
 	else
